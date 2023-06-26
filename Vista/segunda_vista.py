@@ -39,7 +39,7 @@ class Segunda_Vista:
         self.entry4.pack()
         self.entry4.place(x=100, y=400, width=150, height=90)
 
-        self.boton = tkinter.Button(self.ventana2, text="Guardar ", command=self.controlador.guardar_datos_generales())
+        self.boton = tkinter.Button(self.ventana2, text="Guardar ", command=self.controlador.guardar_datos_generales)
         self.boton.pack()
         self.boton.place(x=250, y=400)
 
@@ -53,6 +53,9 @@ class Segunda_Vista:
                                            f"\n Cliente: '{val3}'"
                                            f"\n Descripcion de la prueba: '{val4}'",
                                    title="Ingresar datos")
+
+    def cerrar_ventana2(self):
+        self.ventana2.destroy()
 
     def iniciar(self):
         self.ventana2.mainloop()

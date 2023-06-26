@@ -24,16 +24,14 @@ class Vista:
         self.tree.heading("#3", text="Fecha")
         self.tree.place(x=70, y=150)
 
-        self.boton = tkinter.Button(self.ventana, text="Nueva Prueba", command=self.controlador.abrir_segundaVentana, width=25, height=5)
+        self.boton = tkinter.Button(self.ventana, text="Nueva Prueba", command=self.controlador.abrir_segundaVentana,
+                                    width=25, height=5)
         self.boton.pack()
         self.boton.place(x=360, y=40)
 
         self.etiqueta_hora = tkinter.Label(self.ventana, font=("Arial", 15))
         self.etiqueta_hora.pack()
         self.etiqueta_hora.place(x=20, y=10)
-
-    def cerrar_ventana(self):
-        self.ventana.destroy()
 
     def mostrar_copia_archivo(self, path_destino):
         MessageBox.showinfo("Archivos de la prueba", "Se ha creado una copia de los archivos en: \n" + path_destino)
@@ -45,6 +43,9 @@ class Vista:
         ensayos = self.controlador.obtener_ensayos()
         for row in ensayos:
             self.tree.insert("", "end", text="", values=row)
+
+    def cerrar_ventana(self):
+        self.ventana.destroy()
 
     def actualizar_hora(self):
         hora_actual = self.controlador.obtener_hora_actual()

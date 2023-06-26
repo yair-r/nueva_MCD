@@ -1,6 +1,7 @@
 from Modelo.modelo import Modelo
 from Vista.vista import Vista
 from Vista.segunda_vista import Segunda_Vista
+from Vista.tercer_vista import Tercer_Vista
 import tkinter as tkinter
 
 
@@ -9,9 +10,14 @@ class Controlador:
 
         self.modelo = Modelo()
         self.vista = Vista(self)
-        self.segunda_vista = None  # Inicializar segunda_vista como None
+        self.segunda_vista = None  # Inicializar segunda_vista como None'''
+        self.tercera_vista = None
 
         self.vista.tree.bind("<Double-Button-1>", self.on_tree_select)
+
+    def abrir_tercerVentana(self):
+        self.tercera_vista = Tercer_Vista(self)
+        self.segunda_vista.cerrar_ventana2()
 
     def abrir_segundaVentana(self):
         self.segunda_vista = Segunda_Vista(self)
@@ -23,11 +29,14 @@ class Controlador:
             resultado = self.segunda_vista.confirma_datos(val1, val2, val3, val4)
 
             if resultado == True:
-                self.modelo.ingresar_datos_generales(val1, val2, val3, val4)
+                '''self.modelo.ingresar_datos_generales(val1, val2, val3, val4)'''
+                self.abrir_tercerVentana()
             else:
-                print("no se guardo nada alv")
+                print("Error de guardado")
+                self.segunda_vista.cerrar_ventana2()
         else:
             print("La segunda vista no ha sido inicializada")
+            self.segunda_vista.cerrar_ventana2()
 
     def on_tree_select(self, event):
         item = self.vista.tree.selection()[0]
