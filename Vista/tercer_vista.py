@@ -60,27 +60,31 @@ class Tercer_Vista:
         self.label61.pack()
         self.label61.place(x="780", y="10")
 
-        self.boton11 = tkinter.Button(self.page1, text="Ver graficas", command="", width=15, height=5)
+        self.boton11 = tkinter.Button(self.page1, text="Iniciar", command="", width=15, height=5)
         self.boton11.pack()
         self.boton11.place(x="760", y="150")
 
-        self.boton21 = tkinter.Button(self.page1, text="Ver siguiente prueba", command="", width=15, height=5)
+        self.boton21 = tkinter.Button(self.page1, text="Generar Graficas ", command="", width=15, height=5)
         self.boton21.pack()
         self.boton21.place(x="760", y="270")
 
-        self.boton31 = tkinter.Button(self.page1, text="Guardar en Base de datos", command="", width=15, height=5)
+        self.boton31 = tkinter.Button(self.page1, text="Parar Prueba", command="", width=15, height=5)
         self.boton31.pack()
         self.boton31.place(x="760", y="390")
 
-        self.fig1 = Figure(figsize=(5, 4), dpi=100)
-        self.ax1 = self.fig1.add_subplot(111)
-
-        self.canvas1 = FigureCanvasTkAgg(self.fig1, master=self.page1)
-        self.canvas1.draw()
-        self.canvas1.get_tk_widget().pack()
-        self.canvas1.get_tk_widget().configure(width=700, height=450)
-        self.canvas1.get_tk_widget().place(x=20, y=100)
-
+        tree1 = ttk.Treeview(self.page1)
+        tree1['columns'] = ('Columna1', 'Columna2', 'Columna3')
+        
+        tree1.heading('#0', text='Índice')
+        tree1.column('#0', anchor=tkinter.CENTER, width=80)
+        tree1.heading('Columna1', text='Columna 1')
+        tree1.column('Columna1', anchor=tkinter.CENTER, width=100)
+        tree1.heading('Columna2', text='Columna 2')
+        tree1.column('Columna2', anchor=tkinter.CENTER, width=100)
+        tree1.heading('Columna3', text='Columna 3')
+        tree1.column('Columna3', anchor=tkinter.CENTER, width=100)
+        tree1.pack()
+        tree1.place(x=20, y=100)
         # ----------------------------------------------------------------------
 
         self.label12 = tkinter.Label(self.page2, text="Forma del molde de corte")
@@ -118,27 +122,30 @@ class Tercer_Vista:
         self.label62.pack()
         self.label62.place(x="780", y="10")
 
-        self.boton12 = tkinter.Button(self.page2, text="Ver graficas", command="", width=15, height=5)
+        self.boton12 = tkinter.Button(self.page2, text="Iniciar", command="", width=15, height=5)
         self.boton12.pack()
         self.boton12.place(x="760", y="150")
 
-        self.boton22 = tkinter.Button(self.page2, text="Ver siguiente prueba", command="", width=15, height=5)
+        self.boton22 = tkinter.Button(self.page2, text="Generar Graficas ", command="", width=15, height=5)
         self.boton22.pack()
         self.boton22.place(x="760", y="270")
 
-        self.boton32 = tkinter.Button(self.page2, text="Guardar en Base de datos", command="", width=15, height=5)
+        self.boton32 = tkinter.Button(self.page2, text="Parar Prueba", command="", width=15, height=5)
         self.boton32.pack()
         self.boton32.place(x="760", y="390")
 
-        self.fig2 = Figure(figsize=(5, 4), dpi=100)
-        self.ax2 = self.fig2.add_subplot(111)
-
-        self.canvas2 = FigureCanvasTkAgg(self.fig2, master=self.page2)
-        self.canvas2.draw()
-        self.canvas2.get_tk_widget().pack()
-        self.canvas2.get_tk_widget().configure(width=700, height=450)
-        self.canvas2.get_tk_widget().place(x=20, y=100)
-
+        tree2 = ttk.Treeview(self.page2)
+        tree2['columns'] = ('Columna1', 'Columna2', 'Columna3')
+        tree2.heading('#0', text='Índice')
+        tree2.column('#0', anchor=tkinter.CENTER, width=80)
+        tree2.heading('Columna1', text='Columna 1')
+        tree2.column('Columna1', anchor=tkinter.CENTER, width=100)
+        tree2.heading('Columna2', text='Columna 2')
+        tree2.column('Columna2', anchor=tkinter.CENTER, width=100)
+        tree2.heading('Columna3', text='Columna 3')
+        tree2.column('Columna3', anchor=tkinter.CENTER, width=100)
+        tree2.pack()
+        tree2.place(x=20, y=100)
         # ----------------------------------------------------------------------
 
         self.label13 = tkinter.Label(self.page3, text="Forma del molde de corte")
@@ -175,27 +182,32 @@ class Tercer_Vista:
         self.label63.pack()
         self.label63.place(x="780", y="10")
 
-        self.boton13 = tkinter.Button(self.page3, text="Ver graficas", command="", width=15, height=5)
+        self.boton13 = tkinter.Button(self.page3, text="Iniciar", command="", width=15, height=5)
         self.boton13.pack()
         self.boton13.place(x="760", y="150")
 
-        self.boton23 = tkinter.Button(self.page3, text="Ver siguiente prueba", command="", width=15, height=5)
+        self.boton23 = tkinter.Button(self.page3, text="Generar Graficas ", command="", width=15, height=5)
         self.boton23.pack()
         self.boton23.place(x="760", y="270")
 
-        self.boton33 = tkinter.Button(self.page3, text="Guardar en Base de datos", command="", width=15, height=5)
+        self.boton33 = tkinter.Button(self.page3, text="Parar Prueba", command="", width=15, height=5)
         self.boton33.pack()
         self.boton33.place(x="760", y="390")
 
-        self.fig3 = Figure(figsize=(5, 4), dpi=100)
-        self.ax3 = self.fig3.add_subplot(111)
+        tree3 = ttk.Treeview(self.page3)
+        tree3['columns'] = ('Columna1', 'Columna2', 'Columna3')
+        tree3.heading('#0', text='Índice')
+        tree3.column('#0', anchor=tkinter.CENTER, width=80)
+        tree3.heading('Columna1', text='Columna 1')
+        tree3.column('Columna1', anchor=tkinter.CENTER, width=100)
+        tree3.heading('Columna2', text='Columna 2')
+        tree3.column('Columna2', anchor=tkinter.CENTER, width=100)
+        tree3.heading('Columna3', text='Columna 3')
+        tree3.column('Columna3', anchor=tkinter.CENTER, width=100)
+        tree3.pack()
+        tree3.place(x=20, y=100)
 
-        self.canvas3 = FigureCanvasTkAgg(self.fig3, master=self.page3)
-        self.canvas3.draw()
-        self.canvas3.get_tk_widget().pack()
-        self.canvas3.get_tk_widget().configure(width=700, height=450)
-        self.canvas3.get_tk_widget().place(x=20, y=100)
-
+        #------------------------------------------------------------------
     def obtener_datosPage1(self):
         return (self.value_inside1.get(), self.entry11.get(), self.entry21.get(), self.entry41.get())
 
