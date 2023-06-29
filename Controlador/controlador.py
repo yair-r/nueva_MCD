@@ -22,7 +22,7 @@ class Controlador:
 
     def abrir_graficasPestaña3(self):
        self.vista_pestaña3 = Vista_Pestaña3(self)
-       self.self.tercer_vista.cerrar_pestaña()
+       self.tercer_vista.cerrar_pestaña()
 
     def abrir_graficasPestaña2(self):
         self.vista_pestaña2 = Vista_Pestaña2(self)
