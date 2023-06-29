@@ -1,7 +1,5 @@
 import tkinter as tkinter
 from tkinter import ttk
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
 class Tercer_Vista:
@@ -64,7 +62,7 @@ class Tercer_Vista:
         self.boton11.pack()
         self.boton11.place(x="760", y="150")
 
-        self.boton21 = tkinter.Button(self.page1, text="Generar Graficas ", command="", width=15, height=5)
+        self.boton21 = tkinter.Button(self.page1, text="Generar Graficas ", command=self.controlador.abrir_graficasPestaña1, width=15, height=5)
         self.boton21.pack()
         self.boton21.place(x="760", y="270")
 
@@ -72,19 +70,20 @@ class Tercer_Vista:
         self.boton31.pack()
         self.boton31.place(x="760", y="390")
 
-        tree1 = ttk.Treeview(self.page1)
-        tree1['columns'] = ('Columna1', 'Columna2', 'Columna3')
+        self.tree1 = ttk.Treeview(self.page1)
+        self.tree1['columns'] = ('Columna1', 'Columna2', 'Columna3')
         
-        tree1.heading('#0', text='Índice')
-        tree1.column('#0', anchor=tkinter.CENTER, width=80)
-        tree1.heading('Columna1', text='Columna 1')
-        tree1.column('Columna1', anchor=tkinter.CENTER, width=100)
-        tree1.heading('Columna2', text='Columna 2')
-        tree1.column('Columna2', anchor=tkinter.CENTER, width=100)
-        tree1.heading('Columna3', text='Columna 3')
-        tree1.column('Columna3', anchor=tkinter.CENTER, width=100)
-        tree1.pack()
-        tree1.place(x=20, y=100)
+        self.tree1.heading('#0', text='Índice')
+        self.tree1.column('#0', anchor=tkinter.CENTER, width=80)
+        self.tree1.heading('Columna1', text='Columna 1')
+        self.tree1.column('Columna1', anchor=tkinter.CENTER, width=100)
+        self.tree1.heading('Columna2', text='Columna 2')
+        self.tree1.column('Columna2', anchor=tkinter.CENTER, width=100)
+        self.tree1.heading('Columna3', text='Columna 3')
+        self.tree1.column('Columna3', anchor=tkinter.CENTER, width=100)
+        self.tree1.pack()
+        self.tree1.place(x=70, y=150)
+
         # ----------------------------------------------------------------------
 
         self.label12 = tkinter.Label(self.page2, text="Forma del molde de corte")
@@ -126,7 +125,7 @@ class Tercer_Vista:
         self.boton12.pack()
         self.boton12.place(x="760", y="150")
 
-        self.boton22 = tkinter.Button(self.page2, text="Generar Graficas ", command="", width=15, height=5)
+        self.boton22 = tkinter.Button(self.page2, text="Generar Graficas ", command=self.controlador.abrir_graficasPestaña2, width=15, height=5)
         self.boton22.pack()
         self.boton22.place(x="760", y="270")
 
@@ -134,18 +133,19 @@ class Tercer_Vista:
         self.boton32.pack()
         self.boton32.place(x="760", y="390")
 
-        tree2 = ttk.Treeview(self.page2)
-        tree2['columns'] = ('Columna1', 'Columna2', 'Columna3')
-        tree2.heading('#0', text='Índice')
-        tree2.column('#0', anchor=tkinter.CENTER, width=80)
-        tree2.heading('Columna1', text='Columna 1')
-        tree2.column('Columna1', anchor=tkinter.CENTER, width=100)
-        tree2.heading('Columna2', text='Columna 2')
-        tree2.column('Columna2', anchor=tkinter.CENTER, width=100)
-        tree2.heading('Columna3', text='Columna 3')
-        tree2.column('Columna3', anchor=tkinter.CENTER, width=100)
-        tree2.pack()
-        tree2.place(x=20, y=100)
+        self.tree2 = ttk.Treeview(self.page2)
+        self.tree2['columns'] = ('Columna1', 'Columna2', 'Columna3')
+        self.tree2.heading('#0', text='Índice')
+        self.tree2.column('#0', anchor=tkinter.CENTER, width=80)
+        self.tree2.heading('Columna1', text='Columna 1')
+        self.tree2.column('Columna1', anchor=tkinter.CENTER, width=100)
+        self.tree2.heading('Columna2', text='Columna 2')
+        self.tree2.column('Columna2', anchor=tkinter.CENTER, width=100)
+        self.tree2.heading('Columna3', text='Columna 3')
+        self.tree2.column('Columna3', anchor=tkinter.CENTER, width=100)
+        self.tree2.pack()
+        self.tree2.place(x=20, y=100)
+
         # ----------------------------------------------------------------------
 
         self.label13 = tkinter.Label(self.page3, text="Forma del molde de corte")
@@ -186,7 +186,7 @@ class Tercer_Vista:
         self.boton13.pack()
         self.boton13.place(x="760", y="150")
 
-        self.boton23 = tkinter.Button(self.page3, text="Generar Graficas ", command="", width=15, height=5)
+        self.boton23 = tkinter.Button(self.page3, text="Generar Graficas ", command=self.controlador.abrir_graficasPestaña3, width=15, height=5)
         self.boton23.pack()
         self.boton23.place(x="760", y="270")
 
@@ -194,20 +194,24 @@ class Tercer_Vista:
         self.boton33.pack()
         self.boton33.place(x="760", y="390")
 
-        tree3 = ttk.Treeview(self.page3)
-        tree3['columns'] = ('Columna1', 'Columna2', 'Columna3')
-        tree3.heading('#0', text='Índice')
-        tree3.column('#0', anchor=tkinter.CENTER, width=80)
-        tree3.heading('Columna1', text='Columna 1')
-        tree3.column('Columna1', anchor=tkinter.CENTER, width=100)
-        tree3.heading('Columna2', text='Columna 2')
-        tree3.column('Columna2', anchor=tkinter.CENTER, width=100)
-        tree3.heading('Columna3', text='Columna 3')
-        tree3.column('Columna3', anchor=tkinter.CENTER, width=100)
-        tree3.pack()
-        tree3.place(x=20, y=100)
+        self.tree3 = ttk.Treeview(self.page3)
+        self.tree3['columns'] = ('Columna1', 'Columna2', 'Columna3')
+        self.tree3.heading('#0', text='Índice')
+        self.tree3.column('#0', anchor=tkinter.CENTER, width=80)
+        self.tree3.heading('Columna1', text='Columna 1')
+        self.tree3.column('Columna1', anchor=tkinter.CENTER, width=100)
+        self.tree3.heading('Columna2', text='Columna 2')
+        self.tree3.column('Columna2', anchor=tkinter.CENTER, width=100)
+        self.tree3.heading('Columna3', text='Columna 3')
+        self.tree3.column('Columna3', anchor=tkinter.CENTER, width=100)
+        self.tree3.pack()
+        self.tree3.place(x=20, y=100)
 
         #------------------------------------------------------------------
+
+    def cerrar_pestaña(self):
+        self.ventana3.destroy()
+
     def obtener_datosPage1(self):
         return (self.value_inside1.get(), self.entry11.get(), self.entry21.get(), self.entry41.get())
 

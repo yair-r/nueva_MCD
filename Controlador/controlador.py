@@ -1,8 +1,10 @@
-from Modelo.modelo import Modelo
-from Vista.vista import Vista
+from Vista.vista_pestaña1 import Vista_Pestaña1
+from Vista.vista_pestaña2 import Vista_Pestaña2
+from Vista.vista_pestaña3 import Vista_Pestaña3
 from Vista.segunda_vista import Segunda_Vista
 from Vista.tercer_vista import Tercer_Vista
-import tkinter as tkinter
+from Modelo.modelo import Modelo
+from Vista.vista import Vista
 
 
 class Controlador:
@@ -10,13 +12,28 @@ class Controlador:
 
         self.modelo = Modelo()
         self.vista = Vista(self)
-        self.segunda_vista = None  # Inicializar segunda_vista como None'''
-        self.tercera_vista = None
+        self.segunda_vista = None
+        self.tercer_vista = None
+        self.vista_pestaña1 = None
+        self.vista_pestaña2 = None
+        self.vista_pestaña3 = None
 
         self.vista.tree.bind("<Double-Button-1>", self.on_tree_select)
 
+    def abrir_graficasPestaña3(self):
+       self.vista_pestaña3 = Vista_Pestaña3(self)
+       self.self.tercer_vista.cerrar_pestaña()
+
+    def abrir_graficasPestaña2(self):
+        self.vista_pestaña2 = Vista_Pestaña2(self)
+        self.tercer_vista.cerrar_pestaña()
+
+    def abrir_graficasPestaña1(self):
+        self.vista_pestaña1 = Vista_Pestaña1(self)
+        self.tercer_vista.cerrar_pestaña()
+
     def abrir_tercerVentana(self):
-        self.tercera_vista = Tercer_Vista(self)
+        self.tercer_vista = Tercer_Vista(self)
         self.segunda_vista.cerrar_ventana2()
 
     def abrir_segundaVentana(self):
