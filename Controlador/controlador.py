@@ -20,9 +20,21 @@ class Controlador:
 
         self.vista.tree.bind("<Double-Button-1>", self.on_tree_select)
 
+    def agregar_datosTree3(self):
+        datos = self.modelo.leer_archivo3()
+        self.tercer_vista.agregar_datosTree3(datos)
+
+    def agregar_datosTree2(self):
+        datos = self.modelo.leer_archivo2()
+        self.tercer_vista.agregar_datosTree2(datos)
+
+    def agregar_datosTree1(self):
+        datos = self.modelo.leer_archivo1()
+        self.tercer_vista.agregar_datosTree1(datos)
+
     def abrir_graficasPestaña3(self):
-       self.vista_pestaña3 = Vista_Pestaña3(self)
-       self.tercer_vista.cerrar_pestaña()
+        self.vista_pestaña3 = Vista_Pestaña3(self)
+        self.tercer_vista.cerrar_pestaña()
 
     def abrir_graficasPestaña2(self):
         self.vista_pestaña2 = Vista_Pestaña2(self)

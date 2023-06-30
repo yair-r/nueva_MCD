@@ -13,8 +13,45 @@ class Modelo:
             password="admin",
             database="sistema_mcd"
         )
+
+    def leer_archivo3(self):
+        with open("datos3.txt", 'r') as file:
+            lineas = file.readlines()
+
+        datos = []
+        for linea in lineas:
+            linea = linea.strip()
+            columnas = linea.split(',')
+            datos.append(columnas)
+
+        return datos
+
+    def leer_archivo2(self):
+        with open("datos2.txt", 'r') as file:
+            lineas = file.readlines()
+
+        datos = []
+        for linea in lineas:
+            linea = linea.strip()
+            columnas = linea.split(',')
+            datos.append(columnas)
+
+        return datos
+
+    def leer_archivo1(self):
+        with open("datos1.txt", 'r') as file:
+            lineas = file.readlines()
+
+        datos = []
+        for linea in lineas:
+            linea = linea.strip()
+            columnas = linea.split(',')
+            datos.append(columnas)
+
+        return datos
+
     def ingresar_datos_generales(self, val1, val2, val3, val4):
-        val5= self.obtener_hora_actual()
+        val5 = self.obtener_hora_actual()
         self.mydb.connect()
         mycursor = self.mydb.cursor()
         consulta = "insert into historial_pruebas(nombre_operador, nombre_prueba, descripcion, cliente, fecha) values (%s, %s, %s, %s,%s)"
@@ -25,7 +62,6 @@ class Modelo:
         except:
             self.mydb.rollback()
         self.mydb.close()
-
 
     def obtener_datos_tabla(self, nombre, fecha):
         self.mydb.connect()
