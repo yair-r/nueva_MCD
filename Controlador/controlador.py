@@ -20,29 +20,103 @@ class Controlador:
 
         self.vista.tree.bind("<Double-Button-1>", self.on_tree_select)
 
-    def resolver_esfuerzocortante(self, fuerzacostrante):
-        datos = self.tercer_vista.obtener_datosPage1()
+    def ingresar_esfuerzocortantearchivo(self, indice, datos):
+        contenido=None
+        if indice == 1:
+            with open('datos1.txt','r') as file:
+                contenido = file.readlines()
+        elif indice == 2:
+            with open('datos2.txt','r') as file:
+                contenido = file.readlines()
+        elif indice == 3:
+            with open('datos3.txt','r') as file:
+                contenido = file.readlines()
+
+        if len(datos) != len(contenido):
+            print("El tamaño del arreglo no coincide con el número de filas existentes.")
+        else:
+            filas_actualizadas = []
+            for i in range(len(contenido)):
+                fila = contenido[i].strip()
+                valor_columna = datos[i]
+                fila_actualizada = fila + ", " + str(valor_columna) + "\n"
+                filas_actualizadas.append(fila_actualizada)
+
+            contenido_actualizado = ''.join(filas_actualizadas)
+
+            if indice == 1:
+                with open('datos1.txt', 'w') as file:
+                    file.write(contenido_actualizado)
+            elif indice == 2:
+                with open('datos2.txt', 'w') as file:
+                    file.write(contenido_actualizado)
+            elif indice == 3:
+                with open('datos3.txt', 'w') as file:
+                    file.write(contenido_actualizado)
+
+    def calcular_elmayoresfuerzocortante(self, datos):
+
+        return 3
+
+    def resolver_esfuerzonormal(self):
+
+        return "a"
+
+    def resolver_esfuerzocortante(self, fuerzacostrante, indice):
+        datos = None
+
+        if indice == 1:
+            datos = self.tercer_vista.obtener_datosPage1()
+        elif indice == 2:
+            datos = self.tercer_vista.obtener_datosPage2()
+        elif indice == 3:
+            datos = self.tercer_vista.obtener_datosPage3()
+
         area = float(datos[1])
         fc = float(fuerzacostrante)
         esfuerzocortante = fc / area
         return esfuerzocortante
 
-    def calcular_esfuerzocortante(self):
+    def calcular_esfuerzocortante1(self):
         fuerzacortante = []
         esfuerzocortante = []
         datos = self.tercer_vista.recuperar_datosTabla1()
         for data in datos:
             temporal = data[0]
             fuerzacortante.append(temporal)
-
         for dato in fuerzacortante:
-            res = self.resolver_esfuerzocortante(dato)
+            res = self.resolver_esfuerzocortante(dato, 1)
+            esfuerzocortante.append(res)
+
+        print(esfuerzocortante)
+        self.ingresar_esfuerzocortantearchivo(1,esfuerzocortante)
+
+    def calcular_esfuerzocortante2(self):
+        fuerzacortante = []
+        esfuerzocortante = []
+        datos = self.tercer_vista.recuperar_datosTabla2()
+        for data in datos:
+            temporal = data[0]
+            fuerzacortante.append(temporal)
+        for dato in fuerzacortante:
+            res = self.resolver_esfuerzocortante(dato, 1)
             esfuerzocortante.append(res)
 
         print(esfuerzocortante)
 
-    def recuperar_datosTabla1(self):
-        return 10
+    def calcular_esfuerzocortante3(self):
+        fuerzacortante = []
+        esfuerzocortante = []
+        datos = self.tercer_vista.recuperar_datosTabla3()
+        for data in datos:
+            temporal = data[0]
+            fuerzacortante.append(temporal)
+        for dato in fuerzacortante:
+            res = self.resolver_esfuerzocortante(dato, 3)
+            esfuerzocortante.append(res)
+
+        print(esfuerzocortante)
+
 
     def agregar_datosTree3(self):
         datos = self.modelo.leer_archivo3()

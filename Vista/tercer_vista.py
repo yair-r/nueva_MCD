@@ -71,7 +71,7 @@ class Tercer_Vista:
         self.boton21.pack()
         self.boton21.place(x="760", y="270")
 
-        self.boton31 = tkinter.Button(self.page1, text="Parar Prueba", command=self.controlador.calcular_esfuerzocortante, width=15, height=5)
+        self.boton31 = tkinter.Button(self.page1, text="Parar Prueba", command=self.controlador.calcular_esfuerzocortante1, width=15, height=5)
         self.boton31.pack()
         self.boton31.place(x="760", y="390")
 
