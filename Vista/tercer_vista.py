@@ -1,4 +1,3 @@
-import time
 import tkinter as tkinter
 from tkinter import ttk
 
@@ -62,21 +61,23 @@ class Tercer_Vista:
         self.label71.pack()
         self.label71.place(x="780", y="40")
 
-        self.boton11 = tkinter.Button(self.page1, text="Iniciar", command=self.controlador.agregar_datosTree1, width=15, height=5)
+        self.boton11 = tkinter.Button(self.page1, text="Iniciar", command=self.controlador.agregar_datosTree1, width=15,
+                                      height=5)
         self.boton11.pack()
         self.boton11.place(x="760", y="150")
 
-        self.boton21 = tkinter.Button(self.page1, text="Generar Graficas ", command=self.controlador.abrir_graficasPestaña1, width=15, height=5)
+        self.boton21 = tkinter.Button(self.page1, text="Generar Graficas ",
+                                      command=self.controlador.abrir_graficasPestaña1, width=15, height=5)
         self.boton21.pack()
         self.boton21.place(x="760", y="270")
 
-        self.boton31 = tkinter.Button(self.page1, text="Parar Prueba", command="", width=15, height=5)
+        self.boton31 = tkinter.Button(self.page1, text="Parar Prueba", command=self.controlador.calcular_esfuerzocortante, width=15, height=5)
         self.boton31.pack()
         self.boton31.place(x="760", y="390")
 
         self.tree1 = ttk.Treeview(self.page1, height=20)
         self.tree1['columns'] = ('Columna1', 'Columna2', 'Columna3')
-        
+
         self.tree1.heading('#0', text='Índice')
         self.tree1.column('#0', anchor=tkinter.CENTER, width=80)
         self.tree1.heading('Columna1', text='Fuerza Horizontal \n N')
@@ -128,11 +129,13 @@ class Tercer_Vista:
         self.label72.pack()
         self.label72.place(x="780", y="40")
 
-        self.boton12 = tkinter.Button(self.page2, text="Iniciar", command=self.controlador.agregar_datosTree2, width=15, height=5)
+        self.boton12 = tkinter.Button(self.page2, text="Iniciar", command=self.controlador.agregar_datosTree2, width=15,
+                                      height=5)
         self.boton12.pack()
         self.boton12.place(x="760", y="150")
 
-        self.boton22 = tkinter.Button(self.page2, text="Generar Graficas ", command=self.controlador.abrir_graficasPestaña2, width=15, height=5)
+        self.boton22 = tkinter.Button(self.page2, text="Generar Graficas ",
+                                      command=self.controlador.abrir_graficasPestaña2, width=15, height=5)
         self.boton22.pack()
         self.boton22.place(x="760", y="270")
 
@@ -193,11 +196,13 @@ class Tercer_Vista:
         self.label73.pack()
         self.label73.place(x="780", y="40")
 
-        self.boton13 = tkinter.Button(self.page3, text="Iniciar", command=self.controlador.agregar_datosTree3, width=15, height=5)
+        self.boton13 = tkinter.Button(self.page3, text="Iniciar", command=self.controlador.agregar_datosTree3, width=15,
+                                      height=5)
         self.boton13.pack()
         self.boton13.place(x="760", y="150")
 
-        self.boton23 = tkinter.Button(self.page3, text="Generar Graficas ", command=self.controlador.abrir_graficasPestaña3, width=15, height=5)
+        self.boton23 = tkinter.Button(self.page3, text="Generar Graficas ",
+                                      command=self.controlador.abrir_graficasPestaña3, width=15, height=5)
         self.boton23.pack()
         self.boton23.place(x="760", y="270")
 
@@ -219,7 +224,38 @@ class Tercer_Vista:
         self.tree3.pack()
         self.tree3.place(x=80, y=100)
 
-        #------------------------------------------------------------------
+        # ------------------------------------------------------------------
+
+    def recuperar_datosTabla3(self):
+        datos = []
+        elementos = self.tree3.get_children()
+        for elemento in elementos:
+            valor_columna1 = self.tree3.item(elemento)['values'][0]
+            valor_columna2 = self.tree3.item(elemento)['values'][1]
+            valor_columna3 = self.tree3.item(elemento)['values'][2]
+            datos.append((valor_columna1, valor_columna2, valor_columna3))
+        return datos
+
+    def recrecuperar_datosTabla2(self):
+        datos = []
+        elementos = self.tree2.get_children()
+        for elemento in elementos:
+            valor_columna1 = self.tree2.item(elemento)['values'][0]
+            valor_columna2 = self.tree2.item(elemento)['values'][1]
+            valor_columna3 = self.tree2.item(elemento)['values'][2]
+            datos.append((valor_columna1, valor_columna2, valor_columna3))
+        return datos
+
+    def recuperar_datosTabla1(self):
+        datos = []
+        elementos = self.tree1.get_children()
+        for elemento in elementos:
+            valor_columna1 = self.tree1.item(elemento)['values'][0]
+            valor_columna2 = self.tree1.item(elemento)['values'][1]
+            valor_columna3 = self.tree1.item(elemento)['values'][2]
+            datos.append((valor_columna1, valor_columna2, valor_columna3))
+        return datos
+
     def agregar_datosTree3(self, datos):
         for fila in self.tree3.get_children():
             self.tree3.delete(fila)
@@ -251,7 +287,7 @@ class Tercer_Vista:
         return (self.value_inside2.get(), self.entry12.get(), self.entry22.get(), self.entry42.get())
 
     def obtener_datosPage3(self):
-        return (self.value_inside3.get(), self.entry13.get(), self.entry23.get(),self.entry43.get())
+        return (self.value_inside3.get(), self.entry13.get(), self.entry23.get(), self.entry43.get())
 
     def iniciar(self):
         self.ventana3.mainloop()

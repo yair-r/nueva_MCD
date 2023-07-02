@@ -20,6 +20,30 @@ class Controlador:
 
         self.vista.tree.bind("<Double-Button-1>", self.on_tree_select)
 
+    def resolver_esfuerzocortante(self, fuerzacostrante):
+        datos = self.tercer_vista.obtener_datosPage1()
+        area = float(datos[1])
+        fc = float(fuerzacostrante)
+        esfuerzocortante = fc / area
+        return esfuerzocortante
+
+    def calcular_esfuerzocortante(self):
+        fuerzacortante = []
+        esfuerzocortante = []
+        datos = self.tercer_vista.recuperar_datosTabla1()
+        for data in datos:
+            temporal = data[0]
+            fuerzacortante.append(temporal)
+
+        for dato in fuerzacortante:
+            res = self.resolver_esfuerzocortante(dato)
+            esfuerzocortante.append(res)
+
+        print(esfuerzocortante)
+
+    def recuperar_datosTabla1(self):
+        return 10
+
     def agregar_datosTree3(self):
         datos = self.modelo.leer_archivo3()
         self.tercer_vista.agregar_datosTree3(datos)
