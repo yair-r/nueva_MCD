@@ -61,7 +61,8 @@ class Tercer_Vista:
         self.label71.pack()
         self.label71.place(x="780", y="40")
 
-        self.boton11 = tkinter.Button(self.page1, text="Iniciar", command=self.controlador.agregar_datosTree1, width=15,
+        self.boton11 = tkinter.Button(self.page1, text="Iniciar",
+                                      command=self.controlador.agregar_datosTree1, width=15,
                                       height=5)
         self.boton11.pack()
         self.boton11.place(x="760", y="150")
@@ -71,7 +72,8 @@ class Tercer_Vista:
         self.boton21.pack()
         self.boton21.place(x="760", y="270")
 
-        self.boton31 = tkinter.Button(self.page1, text="Parar Prueba", command=self.controlador.calcular_esfuerzocortante1, width=15, height=5)
+        self.boton31 = tkinter.Button(self.page1, text="Parar Prueba",
+                                      command=self.controlador.calcular_esfuerzocortante1, width=15, height=5)
         self.boton31.pack()
         self.boton31.place(x="760", y="390")
 
@@ -139,7 +141,7 @@ class Tercer_Vista:
         self.boton22.pack()
         self.boton22.place(x="760", y="270")
 
-        self.boton32 = tkinter.Button(self.page2, text="Parar Prueba", command="", width=15, height=5)
+        self.boton32 = tkinter.Button(self.page2, text="Parar Prueba", command=self.controlador.calcular_esfuerzocortante2, width=15, height=5)
         self.boton32.pack()
         self.boton32.place(x="760", y="390")
 
@@ -206,7 +208,8 @@ class Tercer_Vista:
         self.boton23.pack()
         self.boton23.place(x="760", y="270")
 
-        self.boton33 = tkinter.Button(self.page3, text="Parar Prueba", command="", width=15, height=5)
+        self.boton33 = tkinter.Button(self.page3, text="Parar Prueba",
+                                      command=self.controlador.calcular_esfuerzocortante3, width=15, height=5)
         self.boton33.pack()
         self.boton33.place(x="760", y="390")
 
@@ -236,7 +239,7 @@ class Tercer_Vista:
             datos.append((valor_columna1, valor_columna2, valor_columna3))
         return datos
 
-    def recrecuperar_datosTabla2(self):
+    def recuperar_datosTabla2(self):
         datos = []
         elementos = self.tree2.get_children()
         for elemento in elementos:

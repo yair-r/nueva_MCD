@@ -12,6 +12,16 @@ class Vista:
         self.ventana.geometry("900x600")
         self.ventana.resizable(False, False)
 
+        style = ttk.Style()
+        style.theme_use("default")  # Usa el tema predeterminado de ttk
+
+        # Configuración de las propiedades del estilo "Treeview"
+        style.configure("Treeview",
+                        background="#eaf2f8",  # Color de fondo
+                        foreground="black",  # Color de texto
+                        rowheight=25,  # Altura de fila
+                        font=("Arial", 10))  # Fuente y tamaño de texto
+
         self.tree = ttk.Treeview(self.ventana, height=20)
         self.tree["columns"] = ("#1", "#2", "#3")
         self.tree.column("#0", width=60)
@@ -25,13 +35,19 @@ class Vista:
         self.tree.place(x=70, y=150)
 
         self.boton = tkinter.Button(self.ventana, text="Nueva Prueba", command=self.controlador.abrir_segundaVentana,
-                                    width=25, height=5)
+                                    width=25, height=5, borderwidth=2, font=("Arial", 12),  bg="orange", fg="white")
         self.boton.pack()
-        self.boton.place(x=360, y=40)
+        self.boton.place(x=350, y=40)
 
         self.etiqueta_hora = tkinter.Label(self.ventana, font=("Arial", 15))
         self.etiqueta_hora.pack()
         self.etiqueta_hora.place(x=20, y=10)
+
+        texto = "Software maquina de corte directo\n CeVIDE-CRODE Celaya"
+        self.label33 = tkinter.Label(self.ventana, text=texto, font=("Arial", 13))
+        self.label33.pack()
+        self.label33.place(x=620,y=10)
+
 
     def mostrar_copia_archivo(self, path_destino):
         MessageBox.showinfo("Archivos de la prueba", "Se ha creado una copia de los archivos en: \n" + path_destino)

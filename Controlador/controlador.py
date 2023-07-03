@@ -20,6 +20,31 @@ class Controlador:
 
         self.vista.tree.bind("<Double-Button-1>", self.on_tree_select)
 
+
+    def insertar_direccion(self):
+        self.nombre = self.vista_pestaña1.obtener_nombreArchivo()
+        temporal = "C:/Users/Yair/Desktop/Nuvo_nuevo_MCD/"
+        direccion = temporal + self.nombre
+        self.modelo.insertar_direccion(direccion)
+
+    def generar_pdf(self):
+       temporal=[]
+       tree =  self.vista_pestaña1.tree1
+       nombre =self.vista_pestaña1.obtener_nombreArchivo()
+       temporal=self.modelo.obterner_ultimoregistro()
+       id_valor = temporal[0][0]
+       nombre_operador = temporal[0][1]
+       nombre_prueba = temporal[0][2]
+       descripcion = temporal[0][3]
+       cliente = temporal[0][4]
+       fecha = temporal[0][5]
+       self.modelo.generar_pdf(tree,nombre,id_valor,nombre_operador,nombre_prueba,descripcion,cliente,fecha)
+       self.insertar_direccion()
+       self.abrir_denuevomenu()
+
+    def cargar_valoresgrafica(self):
+        valores_x,valores_y =self.modelo.cargar_archivo()
+
     def ingresar_esfuerzocortantearchivo(self, indice, datos):
         contenido=None
         if indice == 1:
@@ -73,8 +98,10 @@ class Controlador:
             datos = self.tercer_vista.obtener_datosPage3()
 
         area = float(datos[1])
+        print(area)
         fc = float(fuerzacostrante)
         esfuerzocortante = fc / area
+        print(esfuerzocortante)
         return esfuerzocortante
 
     def calcular_esfuerzocortante1(self):
@@ -99,10 +126,11 @@ class Controlador:
             temporal = data[0]
             fuerzacortante.append(temporal)
         for dato in fuerzacortante:
-            res = self.resolver_esfuerzocortante(dato, 1)
+            res = self.resolver_esfuerzocortante(dato, 2)
             esfuerzocortante.append(res)
 
         print(esfuerzocortante)
+        self.ingresar_esfuerzocortantearchivo(2,esfuerzocortante)
 
     def calcular_esfuerzocortante3(self):
         fuerzacortante = []
@@ -116,7 +144,7 @@ class Controlador:
             esfuerzocortante.append(res)
 
         print(esfuerzocortante)
-
+        self.ingresar_esfuerzocortantearchivo(3,esfuerzocortante)
 
     def agregar_datosTree3(self):
         datos = self.modelo.leer_archivo3()
@@ -125,6 +153,8 @@ class Controlador:
     def agregar_datosTree2(self):
         datos = self.modelo.leer_archivo2()
         self.tercer_vista.agregar_datosTree2(datos)
+
+
 
     def agregar_datosTree1(self):
         datos = self.modelo.leer_archivo1()
@@ -138,9 +168,18 @@ class Controlador:
         self.vista_pestaña2 = Vista_Pestaña2(self)
         self.tercer_vista.cerrar_pestaña()
 
+    def agregar_datosarbolpestaña1(self):
+        datos = self.modelo.leer_archivo1()
+        self.vista_pestaña1.agregar_datosarbolpestaña1(datos)
     def abrir_graficasPestaña1(self):
         self.vista_pestaña1 = Vista_Pestaña1(self)
         self.tercer_vista.cerrar_pestaña()
+        self.agregar_datosarbolpestaña1()
+        #self.cargar_valoresgrafica()
+
+    def abrir_denuevomenu(self):
+        self.ejecutar()
+        self.vista_pestaña1.cerrar_pestaña()
 
     def abrir_tercerVentana(self):
         self.tercer_vista = Tercer_Vista(self)
@@ -156,7 +195,7 @@ class Controlador:
             resultado = self.segunda_vista.confirma_datos(val1, val2, val3, val4)
 
             if resultado == True:
-                '''self.modelo.ingresar_datos_generales(val1, val2, val3, val4)'''
+                self.modelo.ingresar_datos_generales(val1, val2, val3, val4)
                 self.abrir_tercerVentana()
             else:
                 print("Error de guardado")
@@ -183,7 +222,6 @@ class Controlador:
 
     def obtener_ensayos(self):
         self.datos = self.modelo.obtener_datos_pruebas()
-        self.modelo.cerrar_conexion()
         return self.datos
 
     def obtener_hora_actual(self):
